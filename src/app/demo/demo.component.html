@@ -1,0 +1,44 @@
+<button
+  class="btn btn-primary"
+  [class.disabled]="is_empty"
+  (click)="onclick($event)"
+>
+  don't click me
+</button>
+<!-- 
+       "onclick" function is the event handler for the "click" event
+-->
+<input
+  [inputFormat]="'upperCase'" 
+  type="text"
+  name="name"
+  (keyup)="set_value($event)"
+  #name
+  (keyup.enter)="get_value(name)"
+/>
+<!-- 
+       => "get_value" function is the event handler for the "kyeup.enter" filtered event
+       => "#name" is called a template-variable that is only available inside the HTML template,
+          and acts as a REFERENCE to a HTML element   
+ -->
+<div class="container">
+  <!-- <input class="form-control" type="email" [(ngModel)]="email" /> -->
+  <!-- [(ngModel)] this syntax is called (banana in a box) this syntax is used to impelment
+         two-way-data-binding;
+         to fully implement this approach 
+         => first : import FormModule from '@angular/forms' into "app.module.ts" file
+         => second: add it to "imports" array of NgModule object into "app.module.ts" file
+         => third : use the [(ngModel)]="variable" syntax into your component ;
+            => this variable is a component's class variable "member" ; 
+    -->
+
+  <!-- <p class="lead">Email : {{ email |elipse : 10 }}</p> -->
+</div>
+<div class="container">
+  <div *ngFor="let user of users; let i = index">
+    <app-reusable-component
+      [data]="user"
+      (change)="onChange($event)"
+    ></app-reusable-component>
+  </div>
+</div>

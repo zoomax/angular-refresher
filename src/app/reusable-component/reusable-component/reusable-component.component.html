@@ -1,0 +1,13 @@
+<div class="container">
+  <h3 class="heading">{{ userInfo.name }}</h3>
+
+  <p class="lead">salary : {{ userInfo.salary }}</p>
+  <p class="lead">address : {{ userInfo.address }}</p>
+  <p class="lead">age : {{ userInfo.age }}</p>
+  <p class="lead">
+    <button (click)="onClick($event)" class="btn btn-primary">
+      Send Data
+      <i class="glyphicon glyphicon-user"></i>
+    </button>
+  </p>
+</div>

@@ -1,0 +1,246 @@
+<!-- 
+    => fisrtnama
+    => lastname
+    => email
+    => password
+    => confirm_password
+    => remember me "chexk box"
+    => "user" / "publisher"
+    => "submit form"
+    => validation 
+ -->
+<!-- <div class="alert alert-danger" *ngIf = "fname.invalid && fname.touched">
+    <div *ngIf="fname.errors?.required">this field is required</div>
+    <div *ngIf="fname.errors?.minlength">field content must be at least {{fname.errors?.minlength.requiredLength}} letter </div>
+    <div *ngIf="fname.errors?.maxlength">field content must be at most {{fname.errors?.maxlength.requiredLength}} letter </div>
+    <div *ngIf="">this field is invalid</div>
+    <div *ngIf=""></div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-6 mr-auto ml-auto">
+      <form ngForm #form="ngForm" (ngSubmit)="onsubmit(form)" class="form mt-5">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group mb-2">
+              <label for="fname">First Name </label>
+              <input
+                required
+                class="form-control"
+                type="text"
+                minlength="3"
+                maxlength="10"
+                ngModel
+                name="fname"
+                #fname="ngModel"
+                id="fname"
+              />
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                (fname.invalid && fname.touched) ||
+                (fname.invalid && !fname.pristine)
+              "
+            >
+              <div *ngIf="fname.errors?.required">this field is required</div>
+              <div *ngIf="fname.errors?.minlength">
+                field content must be at least
+                {{ fname.errors?.minlength.requiredLength }} letter
+              </div>
+              <div *ngIf="fname.errors?.maxlength">
+                field content must be at most
+                {{ fname.errors?.maxlength.requiredLength }} letter
+              </div>
+              <!-- <div *ngIf="password.errors?.pattern">this field is invalid</div> -->
+              <!-- <div *ngIf=""></div> -->
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group mb-2">
+              <label for="lname">Last Name </label>
+              <input
+                required
+                class="form-control"
+                type="text"
+                minlength="3"
+                maxlength="10"
+                ngModel
+                name="lname"
+                #lname="ngModel"
+                id="lname"
+              />
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                (lname.invalid && lname.touched) ||
+                (lname.invalid && !lname.pristine)
+              "
+            >
+              <div *ngIf="lname.errors?.required">this field is required</div>
+              <div *ngIf="lname.errors?.minlength">
+                field content must be at least
+                {{ lname.errors?.minlength.requiredLength }} letter
+              </div>
+              <div *ngIf="lname.errors?.maxlength">
+                field content must be at most
+                {{ lname.errors?.maxlength.requiredLength }} letter
+              </div>
+              <div *ngIf="lname.errors?.pattern">this field is invalid</div>
+              <!-- <div *ngIf=""></div> -->
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-2">
+          <label for="email">Email</label>
+          <input
+            class="form-control"
+            type="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            required
+            ngModel
+            name="email"
+            #email="ngModel"
+            id="email"
+          />
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            (email.invalid && email.touched) ||
+            (email.invalid && !email.pristine)
+          "
+        >
+          <div *ngIf="email.errors?.required">this field is required</div>
+          <div *ngIf="email.errors?.minlength">
+            field content must be at least
+            {{ email.errors?.minlength.requiredLength }} letter
+          </div>
+          <div *ngIf="email.errors?.maxlength">
+            field content must be at most
+            {{ email.errors?.maxlength.requiredLength }} letter
+          </div>
+          <div *ngIf="email.errors?.pattern">this field is invalid</div>
+          <!-- <div *ngIf=""></div> -->
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group mb-2">
+              <label for="password">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                maxlength="10"
+                required
+                ngModel
+                name="password"
+                #password="ngModel"
+                id="password"
+              />
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                (password.invalid && password.touched) ||
+                (password.invalid && !password.pristine)
+              "
+            >
+              <div *ngIf="password.errors?.required">
+                this field is required
+              </div>
+              <div *ngIf="password.errors?.minlength">
+                field content must be at least
+                {{ password.errors?.minlength.requiredLength }} letter
+              </div>
+              <div *ngIf="password.errors?.maxlength">
+                field content must be at most
+                {{ password.errors?.maxlength.requiredLength }} letter
+              </div>
+              <div *ngIf="password.errors?.pattern">this field is invalid</div>
+              <!-- <div *ngIf=""></div> -->
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group mb-2">
+              <label for="confirm_password">Confirm Password</label>
+              <input
+                class="form-control"
+                type="password"
+                required
+                maxlength="10"
+                ngModel
+                name="confirm_password"
+                #confirm_password="ngModel"
+                id="confirm_password"
+              />
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                (confirm_password.invalid && confirm_password.touched) ||
+                (confirm_password.invalid && !confirm_password.pristine) ||
+                password.value !== confirm_password.value
+              "
+            >
+              <div *ngIf="confirm_password.errors?.required">
+                this field is required
+              </div>
+              <div *ngIf="confirm_password.errors?.minlength">
+                field content must be at least
+                {{ confirm_password.errors?.minlength.requiredLength }} letter
+              </div>
+              <div *ngIf="confirm_password.errors?.maxlength">
+                field content must be at most
+                {{ confirm_password.errors?.maxlength.requiredLength }} letter
+              </div>
+              <div *ngIf="confirm_password.errors?.pattern">
+                this field is invalid
+              </div>
+              <div *ngIf="password.value !== confirm_password.value">
+                passwords are not the same
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group mt-2">
+              <h4 class="heading text-primary">submit as</h4>
+              <div class="radio" *ngFor="let type of user_types">
+                <label for="user_type">
+                  <input type="radio" ngModel name="user_type" [value]="type" />
+                  {{ type }}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group mt-2">
+              <label for="remember_me">
+                <input
+                  type="checkbox"
+                  ngModel
+                  name="remember_me"
+                  id="remember_me"
+                />
+                Remember Me
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button
+            type="submit"
+            [disabled]="
+              !form.valid || password.value !== confirm_password.value
+            "
+            class="btn btn-primary"
+          >
+            submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

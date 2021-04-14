@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+/* here where you should put bootstrap.css file url */
+.form-control.ng-invalid.ng-touched {
+  border: red solid 2px;
+}
+.form-control.ng-valid {
+  border: green solid 2px;
+}
