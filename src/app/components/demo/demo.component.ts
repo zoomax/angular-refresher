@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LoggerService } from '../services/logger/logger.service';
-import { ElipsePipe } from '../pipes/elipse/elipse.pipe';
+import { LoggerService } from '../../services/logger/logger.service';
+import { ElipsePipe } from '../../pipes/elipse/elipse.pipe';
 import { User } from '../reusable-component/reusable-component/reusable-component.component';
 
 @Component({
@@ -11,7 +11,7 @@ import { User } from '../reusable-component/reusable-component/reusable-componen
 export class DemoComponent {
   users: User[] = [];
   constructor(private loggerService: LoggerService) {
-    this.users = loggerService.getUser() ; 
+    this.users = loggerService.getUser();
   }
   values: string[] = [];
   value = '';
@@ -31,7 +31,8 @@ export class DemoComponent {
     this.value = event.value;
     this.is_empty = false;
   }
-  onChange($event: User) { // EventEmitter reciever function 
+  onChange($event: User) {
+    // EventEmitter reciever function
     // $event parameter represents the emitted value from the custom component (app-reusable-component)
     const { name, id } = $event;
     console.log(`user : ${name} with id : ${id} has been clicked `);

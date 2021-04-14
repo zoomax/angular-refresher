@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../reusable-component/reusable-component/reusable-component.component';
+import { User } from '../../components/reusable-component/reusable-component/reusable-component.component';
 const users: User[] = [
   {
     name: 'hazem tarek',
